@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Document</title>
+  <link rel="stylesheet" href="./dist/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./dist/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./node_modules/leaflet/dist/leaflet.css" />
+  <style>
+    /* control positioning */
+    .leaflet-center {
+      position: relative;
+      left: 0;
+      right: 0;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .leaflet-center .leaflet-control {
+      bottom: 0;
+    }
+
+    .leaflet-control-container .leaflet-control-bottomcenter {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  </style>
+</head>
+
+<body class="font-roboto">
+  <div class="flex flex-col h-screen">
+
+
+    <nav class="sticky top-0 px-2 sm:px-4 py-2.5 bg-primary z-10">
+      <div class="max-w-7xl flex flex-wrap justify-between items-center mx-auto">
+        <!-- Logo -->
+        <a href="#" class="flex">
+          <svg class="mr-3 h-10 shadow" viewBox="0 0 270 160" fill="#fff">
+            <path fill="#fff"
+              d="M268.8 88.7a8.1 8.1 0 0 0 -0.5 -3.1C262.4 71.9 256.7 58.1 250.5 44.5A18.4 18.4 0 0 0 234.2 33.4c-7.3 -0.5 -14.7 0 -22 -0.3c-9.3 -0.3 -14.7 5.8 -14.6 14.5c0.4 19.3 0.3 38.6 0.3 58v3.2l-42.4 0.2v-9l2.8 -0.6C170.5 96.9 179.4 90.1 185 79C190 68.9 189.8 58 188 47.4C184.9 29.1 169.3 16.6 150.2 16.6c-12.8 0 -25.5 0.1 -38.3 0.1c-1 0 -2 -0.1 -3.1 -0.1c-0.1 -4.3 0.1 -8.3 -2.7 -11.7A13.2 13.2 0 0 0 95.5 0c-4.1 -0.1 -8 0.2 -11.4 3c-4.3 3.6 -4.5 8.6 -4.5 13.9h-3c-12.8 0.1 -25.5 0 -38.3 0.2c-14.6 0.2 -26 6.4 -33.3 19.2C2.6 40.7 1.6 45.9 0 50.7l0.1 18.3c1.2 4 2.2 8.1 4.1 11.7c6.1 11.5 16 17.9 29.1 19.8v9.2h-2.8L18 109.8H5.2c-2.1 0 -3.8 0.5 -4.9 2v3.4c2.7 3.8 7 1.8 10.6 2.7c-10.9 13.7 -6.1 29.8 4.6 37.1c10.3 7.1 25.7 6.3 35.2 -6.9c0.5 0.6 0.9 1.1 1.3 1.6a24.6 24.6 0 0 0 26.3 8.7c9.1 -2.7 14.9 -8.7 17.6 -17.8c0.3 -0.8 1 -2.2 1.6 -2.2c5.5 -0.2 10.9 -0.2 16.3 -0.2c2.6 10 5.9 12.6 16 12.5c6.6 0 13.1 -0.2 19.7 0c7.9 0.2 13.9 -4 14.6 -12.1c0 -0.2 0.2 -0.3 0.4 -0.6h2.5c9.6 0 19.2 0 28.8 -0.2c2.2 0 2.9 0.7 3.5 2.7c2.7 9.1 8.7 15 17.9 17.3c8.9 2.2 16.7 -0.1 23.4 -6.4c3.9 -3.7 6.1 -8.4 7.2 -13.8c4.1 0 8.1 0 12.1 -0.1c6 -0.1 9.2 -3.3 9.1 -9.4q-0.2 -19.8 -0.2 -39.6zM89.3 9c1.7 -1.5 7.2 -1.6 9.3 -0.3s2.5 3.5 1.8 8l-12.7 0.1C87.6 14 86.9 11.2 89.3 9zM8.7 68.6A57.9 57.9 0 0 1 8.8 48.4C11.3 34.8 22.6 25.9 36.8 25.1c3 -0.2 5.9 -0.1 9.4 -0.1v8.1c0 2.1 0.8 3.8 3.1 4.3c2.5 0.6 4.6 -1.1 4.7 -3.9s0 -5.6 0 -8.5l80.5 -0.4c0 2.8 -0.1 5.5 0.1 8.2c0.2 3 2 4.5 4.6 4.1s3.2 -2.2 3.3 -4.4c0.1 -2.6 0 -5.2 0 -7.8c20.3 -2.9 34.4 7.3 37.6 23c1.9 9.2 2.2 18.7 -2.1 27.5c-4.9 10 -13.1 15.7 -24.3 16.7c-3.5 0.3 -7.1 0.1 -11 0.1V89l-0.2 -36.7c0 -4.2 -1.3 -6.1 -4.1 -6s-3.8 1.9 -3.8 6q0.1 18.4 0.2 36.7v3.3l-80.5 0.3v-2.9q-0.1 -18.5 -0.2 -37A22.9 22.9 0 0 0 54 50.1a3.9 3.9 0 0 0 -7.6 -0.4a13.1 13.1 0 0 0 -0.2 2.9q0.1 18.5 0.2 37v2.8C27.3 95.5 11.8 85.9 8.7 68.6zM29.6 151.8a17.3 17.3 0 0 1 -17.1 -17a17.1 17.1 0 1 1 17.1 17zM50.6 121.1L48 117.8h5.1zM71.8 151.6A17.4 17.4 0 0 1 54.6 134.5a17.2 17.2 0 0 1 17 -17a17.1 17.1 0 0 1 0.3 34.1zM41.9 109.5V101l105.4 -0.5v8.5zM155.9 138.1c-0.3 2.9 -1.7 4.6 -4.7 4.7q-12.3 0.2 -24.7 0.1c-3 0 -4.6 -1.7 -4.8 -4.8a21.3 21.3 0 0 1 0 -3.7c0.3 -3.1 1.8 -4.6 4.9 -4.6c4.1 -0.1 8.2 -0.1 12.3 -0.1c3.9 0 7.9 -0.1 11.8 0c3.3 0 4.8 1.5 5.1 4.7a20.3 20.3 0 0 1 0 3.6zM203.1 118.8a68.7 68.7 0 0 0 -3.8 7.1c-1.6 4.1 -1.5 4.1 -6 4.2c-9.2 0 -18.4 0 -27.5 0.2a3.4 3.4 0 0 1 -3.7 -2.1a11.2 11.2 0 0 0 -10.2 -6.3q-13.1 -0.1 -26.2 0.1c-4.8 0.1 -8.2 2.6 -10.5 6.7a3.6 3.6 0 0 1 -2.5 1.7c-4.9 0.2 -9.8 0.2 -14.7 0.1a2.9 2.9 0 0 1 -2.1 -1.3c-1.8 -3.8 -3.4 -7.7 -5.1 -11.7l113.4 -0.5c-0.4 0.7 -0.8 1.3 -1.1 1.8zM248.2 59c2.9 6.3 5.6 12.8 8.3 19.2a4.1 4.1 0 0 1 0 1.1h-5.5c-6.2 0 -12.4 0.1 -18.6 0.1c-6.7 0 -10 -3.3 -10 -9.9V57.8h6.4c5.7 0 11.3 -0.1 17 0a3.2 3.2 0 0 1 2.4 1.2zM223.2 150.9A17.2 17.2 0 0 1 206 133.8a17.1 17.1 0 0 1 34.1 -0.1a17.3 17.3 0 0 1 -16.9 17.2zM261 89.9c-0.1 3.3 0 6.6 0 10.3c-4 0.2 -8.3 -0.5 -11 3.4c-2.1 3 -1.6 6.4 -1.4 9.6c0.3 5.1 3.3 6.9 12.6 7.7v8.5l-12.5 0.1c-2.4 -4.3 -4.2 -8.7 -7.1 -12.2c-5 -6.1 -11.9 -8.6 -19.7 -8.5c-5.2 0.1 -10.4 0 -16 0.1v-3.1q-0.1 -29.1 -0.3 -58.2c0 -5.2 1.3 -6.6 6.4 -6.6c6.4 0 12.8 -0.1 19.1 -0.1s11.1 3.2 12.9 8.9l-21.7 0.1c-7.5 0 -7.8 0.4 -7.8 7.9V69c0.1 11.5 6.8 18.2 18.3 18.2c8.4 0 16.8 0 25.2 -0.2c2.3 0 3 0.7 2.9 2.9zM260.8 108.4v4.4h-4.5v-4.4z" />
+          </svg>
+        </a>
+        <!-- logo -->
+
+        <!-- Burguer -->
+        <button id="burger" type="button"
+          class="inline-flex items-center p-2 ml-3 md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <!-- Burguer -->
+
+        <!-- Menu -->
+        <div id="navb"
+          class="overflow-hidden text-white w-full h-0 transition-all ease-out duration-500 md:h-full md:overflow-visible md:transition-none md:block md:w-auto">
+          <ul
+            class="flex flex-col md:flex-row text-base 2xl:text-xl justify-around ml-auto text-center w-full h-40 md:bg-transparent md:h-full md:space-x-8 md:pr-5 ">
+            <li>
+              <a href="#" class="block py-2 pr-4 pl-3 border-gray-100  md:hover:text-secondary md:p-0"
+                aria-current="page">Home</a>
+            </li>
+            <li>
+              <a href="#" class="block py-2 pr-4 pl-3 border-gray-100  md:hover:text-secondary md:p-0">About</a>
+            </li>
+            <li>
+              <a href="#" class="block py-2 pr-4 pl-3 border-gray-100  md:hover:text-secondary md:p-0">Services</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Menu -->
+      </div>
+    </nav>
+
+    <!-- Mapa -->
+    <div id="map" class="h-screen max-w-full">
+      <div id='waiting' class='invisible z-[10000] absolute top-0 bg-opacity-50 bg-black w-full h-screen'>
+      </div>
+      <div id='waitingSpinner'
+        class='invisible z-[10000] absolute top-0 flex items-center justify-center w-full h-screen'>
+        <svg role="status" class="inline mr-2 w-10 h-10 text-gray-200 animate-spin fill-primary" viewBox="0 0 100 100"
+          fill="none">
+          <path
+            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+            fill="currentColor" />
+          <path
+            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+            fill="currentFill" />
+        </svg>
+      </div>
+
+
+      <!-- tooltip ubicacion-->
+      <div id="ttubicacion" class="animate-bounce-bottom absolute top-20 right-4 z-[500] ">
+        <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
+          Ubica tu vivienda</span>
+        <div class="w-3 h-3 -mt-7 ml-auto mr-4 rotate-45 bg-black"></div>
+      </div>
+      <!-- tooltip ubicacion end-->
+
+      <!-- toast titulo-->
+      <div id="toastTitulo"
+        class="animate-titulo absolute top-2 z-[500] flex justify-between w-full max-w-xs mx-auto bg-white rounded-lg shadow-md opacity-90">
+        <div class="flex items-center justify-center w-12 bg-primary">
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 25 41">
+            <path fill="#fff"
+              d="M25 14C24 7 20 1 14 0 9 0 4 3 2 8c-3 6-2 12 1 17l9 15c1 1 2-1 3-2l8-16 2-8zm-12 8c-4 0-7-5-6-8 1-4 4-6 7-5 4 1 5 7 3 11l-4 2z" />
+            <path fill="#fff" d="M18 15c0 3-2 7-5 7v19l2-4 8-15c3-7 1-16-5-20l-5-2v9c3 0 5 3 5 6z" />
+          </svg>
+        </div>
+        <div class="px-4 py-2 mr-auto">
+          <span class="font-semibold text-primary">TU UBICA</span>
+          <p class="text-sm  ">Encuentra tu ubicación</p>
+        </div>
+        <button id="toastTituloButton" type="button" class="flex items-center justify-center w-12 cursor-pointer">
+          <svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 512 512">
+            <path fill="currentColor"
+              d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z">
+            </path>
+          </svg>
+        </button>
+      </div>
+      <!-- toast titulo end-->
+
+      <!-- Modal Precio-->
+      <div id="modal"
+        class="invisible absolute left-1/2 bottom-1/2 transform -translate-x-1/2 translate-y-1/2 z-[10000]"
+        id="popup-modal">
+        <div class="relative w-full max-w-md h-full md:h-auto">
+          <!-- Modal content -->
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex justify-end p-2">
+              <button id="xModal" type="button"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div id="precio" class="p-6 pt-0 text-center ">
+              <p class="text-4xl pb-2">Bs.XXX</p>
+              <!-- <svg class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> -->
+              <h4 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                Precio para limpieza de un pozo y cámara séptica de tipo vivienda.</h4>
+              <button id="confirmarModal" type="button"
+                class="w-36 mb-3 mr-2 text-white bg-primary hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm py-2.5">
+                CONFIRMAR
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- Fin mapa -->
+
+    <!-- Globo de whatsapp -->
+    <div id="wapp" class="invisible fixed top-1/3 right-1 w-16 max-w-xs z-[1000]">
+      <a>
+        <svg fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 125 125">
+          <path fill="#ffffff" class="shadow-x2" d="M6 116a1 1 0 0 1-2-2l8-28a56 56 0 1 1 23 22l-29 8z" />
+          <path fill="#40c351" d="M93 27c-8-9-20-14-32-14a46 46 0 0 0-39 70l2 2-5 17 17-5 2 1a46 46 0 0 0 55-71z" />
+          <path fill="#ffffff"
+            d="m47 36-3-3h-2l-4 2c-1 2-5 5-5 12 0 6 5 13 6 14s9 15 23 20c12 5 14 4 17 4 2 0 8-3 9-7l1-6-3-2-9-4h-3l-5 6h-3l-11-7c-4-3-6-8-7-9v-3l2-2 2-3v-2l-5-10z" />
+        </svg>
+      </a>
+    </div>
+
+    <script src="./node_modules/leaflet/dist/leaflet.js"></script>
+    <script src="./src/poligonos.js"></script>
+    <script src="./src/Leaflet.AccuratePosition.js"></script>
+    <script src="./src/Leaflet.Control.Custom.js"></script>
+    <script src="./src/leaflet.Control.Center.js"></script>
+    <!-- <script src="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script> -->
+    <script src="./map.js"></script>
+
+</body>
+
+</html>

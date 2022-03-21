@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Document</title>
+  <link rel="stylesheet" href="./dist/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./dist/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./node_modules/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+</head>
+
+<body class="font-roboto">
+
+  <div class="flex items-center justify-center w-screen h-screen">
+
+    <div class="flex flex-col">
+      <span class="relative z-10 p-2 mt-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">A top
+        aligned tooltip.</span>
+      <div class="w-3 h-3 -mt-8 ml-20 pl-2 rotate-45 bg-black"></div>
+    </div>
+
+  </div>
+
+  <!-- <div class="flex justify-center">
+
+    <button id='ubicando' type="button" class="h-14 w-14 text-center bg-white rounded-md border border-black">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M2 12h3m14 0h3M12 2v3m0 14v3"/>
+            <circle cx="12" cy="12" r="7"/>
+            <circle cx="12" cy="12" r="3"/>
+        </svg>
+    </button>
+
+  </div> -->
+
+
+  <script src="./node_modules/leaflet/dist/leaflet.js"></script>
+  <script src="./src/poligonos.js"></script>
+  <script src="./src/Leaflet.AccuratePosition.js"></script>
+  <script src="./src/Leaflet.Control.Custom.js"></script>
+  <script src="./src/leaflet.Control.Center.js"></script>
+  <script src="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+
+</body>
+
+</html>

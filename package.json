@@ -1,0 +1,29 @@
+{
+  "name": "pozosscz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tw:dev": "npx tailwind -i ./src/tailwind.css -o ./dist/style.css -w",
+    "tw:prod": "postcss ./src/tailwind.css -o ./dist/style.css -w",
+    "prod": "npm run tw:prod",
+    "build": "webpack -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "cssnano": "^5.1.0",
+    "postcss-cli": "^9.1.0",
+    "tailwindcss": "^3.0.23",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "_id": "tailwind@1.0.0",
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "kute.js": "^2.2.2",
+    "leaflet": "^1.7.1"
+  }
+}
